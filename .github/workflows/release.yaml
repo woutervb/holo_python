@@ -27,10 +27,14 @@ jobs:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2
       - name: build_micropython
-        run: ./micropython.sh ${{ matrix.idf }}
+        id: build
+        run: |
+          ./micropython.sh ${{ matrix.idf }}
+          cat vars >> ${GITHUB_OUTPUT}
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           files: micropython*.bin
+          tag_name: ${{ steps.build.outputs.version }}
 
 
