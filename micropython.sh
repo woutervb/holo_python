@@ -96,6 +96,11 @@ function rename_micropython () {
     ${HOME_DIR}/micropython-${MICROPYTHON_VER}-${ESP_VER}.bin
 }
 
+function write_out_vars() {
+  echo "" > ${HOME_DIR}/vars
+  echo "version=${MICROPYTHON_VER}-${ESP_VER}" >> ${HOME_DIR}/vars
+}
+
 validate_idf_tag
 
 install_idf
@@ -105,3 +110,5 @@ setup_micropython
 build_micropython
 
 rename_micropython
+
+write_out_vars

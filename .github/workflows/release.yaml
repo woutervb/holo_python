@@ -3,6 +3,9 @@ name: Make a release of a specialised micropython
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref}}
   cancel-in-progress: true
@@ -11,9 +14,11 @@ jobs:
   build_micropython:
     runs-on: ubuntu-latest
 
+    continue-on-error: ${{ matrix.experimental }}
     strategy:
       fail-fast: false
       matrix:
+        experimental: [false]
         include:
           - idf: v5.0.4
             experimental: false
@@ -27,10 +32,16 @@ jobs:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2
       - name: build_micropython
-        run: ./micropython.sh ${{ matrix.idf }}
+        id: build
+        run: |
+          ./micropython.sh ${{ matrix.idf }}
+          cat vars >> ${GITHUB_OUTPUT}
+          git tag ${{ steps.build.outputs.version }}
+          git push --tags
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           files: micropython*.bin
+          tag_name: ${{ steps.build.outputs.version }}
 
 
