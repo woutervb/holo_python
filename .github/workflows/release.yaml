@@ -3,6 +3,9 @@ name: Make a release of a specialised micropython
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref}}
   cancel-in-progress: true
