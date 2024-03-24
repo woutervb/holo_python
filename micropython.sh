@@ -39,7 +39,7 @@ function clone_or_update() {
 
 function install_idf() {
   # Setup the idf repository
-  clone_or_update ${ESP_IDF_REPO} ${ESP_IDF} 
+  clone_or_update ${ESP_IDF_REPO} ${ESP_IDF}
   cd ${ESP_IDF}
   git checkout ${ESP_VER} > /dev/null 2>&1
   echo "Getting submodules"
@@ -79,16 +79,16 @@ function build_micropython() {
   echo "Building micropython ${MICROPYTHON_VER}"
 
   cd ${MICROPYTHON}/mpy-cross
-  
+
   echo "Building mpy-cross"
   make ${MAKEOPTS}
 
   cd ${MICROPYTHON}/ports/esp32
 
   echo "Building submodules"
-  make ${MAKEOPTS} BOARD=ESP32_GENERIC submodules 
+  make ${MAKEOPTS} BOARD=ESP32_GENERIC submodules
   echo "Building micropython"
-  make ${MAKEOPTS} 
+  make ${MAKEOPTS}
 }
 
 function rename_micropython () {

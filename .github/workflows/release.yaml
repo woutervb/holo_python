@@ -43,5 +43,3 @@ jobs:
         with:
           files: micropython*.bin
           tag_name: ${{ steps.build.outputs.version }}
-
-

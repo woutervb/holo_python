@@ -1,0 +1,9 @@
+# Configure 2 package managers for minimal work
+
+version: 2
+updates:
+  # Enable version updates for GitHub Actions, they don't change often, and impact can be big
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
