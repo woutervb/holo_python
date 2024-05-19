@@ -7,12 +7,12 @@ holocube.
 
 ## Current status
 
-| component              | should be working  | confirmed |
-| ---------------------- | ------------------ | --------- |
-| rgb led                | :heavy_check_mark: | :x:       |
-| lcd                    | :x:                | :x:       |
-| 3 axis tilt sensor     | :x:                | :x:       |
-| helper for definitions | :x:                | :x:       |
+| component              | should be working  | confirmed          |
+| ---------------------- | ------------------ | ------------------ |
+| rgb led                | :heavy_check_mark: | :heavy_check_mark: |
+| lcd                    | :x:                | :x:                |
+| 3 axis tilt sensor     | :x:                | :x:                |
+| helper for definitions | :x:                | :x:                |
 
 ## Helper for definitions
 
