@@ -1,0 +1,5 @@
+vars
+node_modules/
+esp-idf/
+micropython/
+micropython-v*
